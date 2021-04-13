@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rainbow balls</title>
+        <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .bouncing-section{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: darkblue;
+        }
+        .bouncing-section ul{
+            display: flex;
+            border-bottom: 8px solid white;
+        }
+        .bouncing-section ul li{
+            width: 30px;
+            height: 30px;
+            background:floralwhite;
+            list-style: none;
+            margin: 0 10px;
+            border-radius: 50%;
+            animation: bouncy 1s linear infinite;
+        }
+        @keyframes bouncy{
+            0%{transform: translateY(0); }
+            50%{ transform: translateY(-150px);}
+            100%{ transform: translateY(0);}
+        }
+
+        ul li:nth-child(1){
+            animation-delay: 0.2s;
+            background-color: #E13A16;
+        }
+        ul li:nth-child(2){
+            animation-delay: 0.6s;
+            background-color: gold;
+        }
+        ul li:nth-child(3){
+            animation-delay: 0.4s;
+            background-color: skyblue;
+        }
+        ul li:nth-child(4){
+            animation-delay: 0.7s;
+            background-color: plum;
+        }
+        ul li:nth-child(5){
+            animation-delay: 0.5s;
+            background-color: pink;
+        }
+        ul li:nth-child(6){
+            animation-delay: 0.1s;
+            background-color: greenyellow;
+        }
+        ul li:nth-child(7){
+            animation-delay: 0.2s;
+            background-color: white;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="bouncing-section">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="ball1" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top:150px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:red">
+    </div>
+
+    <div id="ball2" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top:300px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:orange">
+    </div>
+
+    <div id="ball3" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top:450px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:yellow">
+    </div>
+
+    <div id="ball4" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top: 600px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:greenyellow">
+    </div>
+
+    <div id="ball5" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top: 750px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:lightblue">
+    </div>
+
+    <div id="ball6" style="
+            z-index:5;
+            position:absolute;
+            left:0px;
+            top:900px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:plum">
+    </div>
+
+    </body>
+    <script>
+
+        //Set global variable that would contain the position, velocity and the html element "ball"
+        var ball1 = document.getElementById('ball1'); 
+        var ball2 = document.getElementById('ball2');
+        var ball3 = document.getElementById('ball3');
+        var ball4 = document.getElementById('ball4');
+        var ball5 = document.getElementById('ball5');
+
+        var velocity1 = 40;
+        var velocity2 = 30;
+        var velocity3 = 10;
+        var velocity4 = 50;
+        var velocity5 = 60;
+        var velocity6 = 20;
+
+        var positionX1 = 0;
+        var positionX2 = 0;
+        var positionX3 = 0;
+        var positionX4 = 0;
+        var positionX5 = 0;
+        var positionX6 = 0;
+
+        var reverse1 = false;
+        var reverse2 = false;
+        var reverse3 = false;
+        var reverse4 = false;
+        var reverse5 = false;
+        var reverse6 = false;
+        
+        //write a function that can change the position of the html element "ball"
+
+        function moveBall1() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse1 == true){
+            positionX1 = positionX1 - velocity1;
+            ball1.style.left = positionX1 + 'px';
+    
+          }else if(reverse1 == false){
+            positionX1 = positionX1 + velocity1;
+            ball1.style.left = positionX1 + 'px';
+
+          }        
+         if(positionX1 > Xmax){
+            reverse1 = true;
+          }else if(positionX1 == Xmin){
+            reverse1 = false;
+          }
+            
+        }
+
+        function moveBall2() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse2 == true){
+            positionX2 = positionX2 - velocity2;
+            ball2.style.left = positionX2 + 'px';
+    
+          }else if(reverse2 == false){
+            positionX2 = positionX2 + velocity2;
+            ball2.style.left = positionX2 + 'px';
+
+          }        
+         if(positionX2 > Xmax){
+            reverse2 = true;
+          }else if(positionX2 == Xmin){
+            reverse2 = false;
+          }
+            
+        }
+
+        function moveBall3() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse3 == true){
+            positionX3 = positionX3 - velocity3;
+            ball3.style.left = positionX3 + 'px';
+    
+          }else if(reverse3 == false){
+            positionX3 = positionX3 + velocity3;
+            ball3.style.left = positionX3 + 'px';
+
+          }        
+         if(positionX3 > Xmax){
+            reverse3 = true;
+          }else if(positionX3 == Xmin){
+            reverse3 = false;
+          }
+            
+        }
+
+        function moveBall4() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse4 == true){
+            positionX4 = positionX4 - velocity4;
+            ball4.style.left = positionX4 + 'px';
+    
+          }else if(reverse4 == false){
+            positionX4 = positionX4 + velocity4;
+            ball4.style.left = positionX4 + 'px';
+
+          }        
+         if(positionX4 > Xmax){
+            reverse4 = true;
+          }else if(positionX4 == Xmin){
+            reverse4 = false;
+          }
+            
+        }
+
+        function moveBall5() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse5 == true){
+            positionX5 = positionX5 - velocity5;
+            ball5.style.left = positionX5 + 'px';
+    
+          }else if(reverse5 == false){
+            positionX5 = positionX5 + velocity5;
+            ball5.style.left = positionX5 + 'px';
+
+          }        
+         if(positionX5 > Xmax){
+            reverse5 = true;
+          }else if(positionX5 == Xmin){
+            reverse5 = false;
+          }
+            
+        }
+
+        function moveBall6() {
+          // two fixed x-axis coordinates (you will use these variable in step 3)
+          var Xmin = 0;
+          var Xmax = 200;
+        
+          if(reverse6 == true){
+            positionX6 = positionX6 - velocity6;
+            ball6.style.left = positionX6 + 'px';
+    
+          }else if(reverse6 == false){
+            positionX6 = positionX6 + velocity6;
+            ball6.style.left = positionX6 + 'px';
+
+          }        
+         if(positionX6 > Xmax){
+            reverse6 = true;
+          }else if(positionX6 == Xmin){
+            reverse6 = false;
+          }
+            
+        }
+        
+
+        // This call the moveBall function every 100ms
+        setInterval(moveBall1, velocity1);
+        setInterval(moveBall2, velocity2);
+        setInterval(moveBall3, velocity3);
+        setInterval(moveBall4, velocity4);
+        setInterval(moveBall5, velocity5);
+        setInterval(moveBall6, velocity6);
+
+
+    </script>
+</html>
