@@ -1,4 +1,4 @@
-# Bouncing Balls
+# Bouncing Rainbow Balls
 
 _This is an exercise developed during the course Mit xPro. It consists of bouncing balls on the screen._
 
